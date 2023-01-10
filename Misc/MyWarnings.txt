@@ -1,0 +1,4 @@
+{{/*Made By Reaper Ian#1600
+Recommended Trigger Type: Command
+Recommended Trigger: mywarns*/}}
+{{sendMessage nil (execAdmin "warnings" .User.Mention)}}

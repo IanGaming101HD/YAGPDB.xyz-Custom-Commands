@@ -1,0 +1,15 @@
+{{if reFind `\d+` .Channel.Name}}
+{{$claimer := (dbGet .Channel.ID  "claimer").Value}}
+{{if  $claimer}}
+{{if eq (userArg $claimer).ID .User.ID}}
+{{sendMessage nil (print "You already claimed this ticket, " (userArg $claimer).Mention)}}
+{{else}}
+{{sendMessage nil (print "Sorry " .User.Mention ", this ticket has been already claimed by " (userArg $claimer).Mention )}}
+{{end}}
+{{else}}
+{{dbSet .Channel.ID  "claimer" (str .User.ID)}}
+{{sendMessage nil (print "This ticket has been claimed by " .User.Mention)}}
+{{end}}
+{{else}}
+{{sendMessage nil "Sorry, you cannot claim this channel!"}}
+{{end}}

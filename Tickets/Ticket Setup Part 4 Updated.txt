@@ -1,0 +1,5 @@
+{{$user := (dbGet 0 "User").Value}}
+{{$embed2 := sendMessageNoEscapeRetID nil (complexMessage
+"content" (print (mentionRoleID 885959170078175293) " " $user)
+"embed" (cembed "title" (joinStr "" "**" .Guild.Name "**") "description" (joinStr "" "Greetings, " $user "\n \n We've recieved your request for assistance \n A member from our dedicated support team will be with you shortly. \n In order to recieve the fastest support, please make sure you're ready to provide additional information outlined in the guidelines for this ticket.") "color" 4645612 ))}}
+{{addMessageReactions nil $embed2 "🔒"}}

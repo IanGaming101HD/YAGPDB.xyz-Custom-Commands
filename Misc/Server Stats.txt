@@ -1,0 +1,5 @@
+{{/*Made By Reaper Ian#1600
+Recommended Trigger Type: Minute Interval
+Recommended Interval: 5*/}}
+{{ $x := sub 3000 .Guild.MemberCount }}
+{{ editChannelName "756948939655086110" (joinStr "" $x " Users Until 3k") }} 

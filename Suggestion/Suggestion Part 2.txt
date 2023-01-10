@@ -1,0 +1,20 @@
+{{/*Made by Reaper Ian#1600
+Recommended trigger type: Command
+Recommended trigger: reject*/}}
+
+{{$args := parseArgs 0 "" (carg "int" "message_id") (carg "string" "response")}}
+ 
+{{if eq (len .CmdArgs) 0}}
+ 
+```reject <message_id> <response>```
+ 
+{{else}}
+ 
+{{$id := ($args.Get 0)}}
+{{$channel := .Channel.ID}}
+{{if and ($message := getMessage $channel $id) $message.Embeds}}
+    {{$embed := index $message.Embeds 0 | structToSdict}}
+    {{$embed.Set "description" (joinStr "" $embed.Description "\n \n **Rejected by " .User.Username "** \n " (slice .CmdArgs 1))}}
+    {{cembed $embed | editMessage $channel $message.ID}}
+{{end}}
+{{end}}

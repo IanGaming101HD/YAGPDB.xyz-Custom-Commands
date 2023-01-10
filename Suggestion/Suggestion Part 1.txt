@@ -1,0 +1,30 @@
+{{/*Made by Reaper Ian#1600
+Recommended trigger type: Command
+Recommended trigger: suggest*/}}
+
+{{$oldcount := 0}}
+{{dbSet 0 "suggestion_number" $oldcount}}
+
+{{$oldcount := toInt (dbGet 0 "suggestion_count").Value}}
+{{$count := (add $oldcount 1)}}
+
+
+{{$args := parseArgs 0 "" (carg "string" "suggestion")}}
+
+{{if eq (len .CmdArgs) 0}}
+
+```-suggest <suggestion>```
+
+{{else}}
+
+{{$embed := sendMessageRetID nil (cembed
+"author" (sdict "name" .User.Username "icon_url" (.User.AvatarURL "256"))
+"title" (print "**Suggestion " $count "**")
+"description" (print .StrippedMsg)
+"color" 000001)}}
+
+{{addMessageReactions nil $embed "ES_Upvote:827589201502666762" "ES_downvote:827589236416708637"}}
+
+{{dbSet 0 "suggestion_count" $count}}
+{{dbSet 0 "embed" (str $embed)}}
+{{end}}

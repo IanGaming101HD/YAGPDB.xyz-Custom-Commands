@@ -1,0 +1,14 @@
+{{/*Made By Reaper Ian#1600
+Recommended Trigger Type: Starts with
+Recommended Trigger: \-warn*/}}
+{{$args := parseArgs 0 "" (carg "member" "mention/id") (carg "string" "reason")}}
+
+{{if eq (len .CmdArgs) 0}}
+ 
+{{sendMessage nil (print "```Warn <User:Mention/ID> <Reason:Text>```\nInvalid arguments provided: Not enough arguments passed")}}
+ 
+{{else}}
+
+{{sendMessage nil (print ":warning: Warned `" (index .Message.Mentions 0).Username "`")}}
+
+{{end}}

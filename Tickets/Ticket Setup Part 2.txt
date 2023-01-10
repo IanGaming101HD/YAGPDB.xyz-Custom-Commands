@@ -1,0 +1,20 @@
+{{/*Made By Reaper Ian#1600*/}}
+{{/*Recommended Trigger Type: Reaction*/}}
+{{/*Recommended Trigger: Added reactions only*/}}
+{{$user := dbSet 0 "User" .User.Mention}}
+{{$en := .Reaction.Emoji.Name}}
+{{if eq .Message.Author.ID 204255221017214977}}
+    {{if (eq $en "🚫")}}
+        {{$exec1 := exec "ticket create Scammer"}}
+        {{deleteMessageReaction .Reaction.ChannelID .Reaction.MessageID .Reaction.UserID "🚫"}}
+    {{else if (eq $en "⚠️")}}
+        {{$exec2 := exec "ticket create Member"}}
+        {{deleteMessageReaction .Reaction.ChannelID .Reaction.MessageID .Reaction.UserID "⚠️"}}
+    {{else if (eq $en "💸")}}
+        {{$exec3 := exec "ticket create Donate"}}
+        {{deleteMessageReaction .Reaction.ChannelID .Reaction.MessageID .Reaction.UserID "💸"}}
+    {{else if (eq $en "❓")}}
+        {{$exec4 := exec "ticket create Other"}}
+        {{deleteMessageReaction .Reaction.ChannelID .Reaction.MessageID .Reaction.UserID "❓"}}
+    {{end}}
+{{end}}

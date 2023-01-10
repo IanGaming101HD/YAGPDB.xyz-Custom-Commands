@@ -1,0 +1,21 @@
+{{/*Made By Reaper Ian#1600
+Recommended Trigger Type: Starts with
+Recommended Trigger: \-mute*/}}
+{{$args := parseArgs 0 "" (carg "member" "mention/id") (carg "string" "reason") (carg "duration" "duration")}}
+{{$user := ($args.Get 0).User.Username}}
+{{$duration := ($args.Get 2) }}
+ 
+{{if eq (len .CmdArgs) 0}}
+ 
+```Mute <User:Mention/ID> <Duration:Duration> <Reason:Text>
+Mute <User:Mention/ID> <Reason:Text> <Duration:Duration>
+Mute <User:Mention/ID> <Duration:Duration>
+Mute <User:Mention/ID> <Reason:Text>
+Mute <User:Mention/ID>```
+Invalid arguments provided: No matching combo found
+ 
+ {{else}}
+ 
+{{sendMessage nil (print ":mute: Muted `" $user "` for `" (humanizeDurationSeconds $duration) "`")}}
+ 
+{{end}}

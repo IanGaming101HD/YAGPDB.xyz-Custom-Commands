@@ -1,0 +1,14 @@
+{{/*Made By Reaper Ian#1600
+Recommended Trigger Type: Starts with
+Recommended Trigger: \-ban*/}}
+{{$args := parseArgs 0 "" (carg "member" "mention/id") (carg "string" "reason")}}
+
+{{if eq (len .CmdArgs) 0}}
+ 
+{{sendMessage nil (print "```Ban <User:Mention/ID> [Reason:Text]``````[-d Duration:Duration]-ban\n[-ddays Days:Whole number]```\nInvalid arguments provided: Not enough arguments passed")}}
+ 
+{{else}}
+
+{{sendMessage nil (print "🔨 Banned `" (index .Message.Mentions 0).Username "` indefinitely.")}}
+
+{{end}}

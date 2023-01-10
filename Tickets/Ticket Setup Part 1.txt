@@ -1,0 +1,8 @@
+{{/*Made By Reaper Ian#1600*/}}
+{{/*Recommended Trigger Type: Command*/}}
+{{/*Recommended Trigger: setup*/}}
+{{$embed := sendMessageRetID nil (cembed
+"Title" "**Tickets**" 
+"Description" (print "**Tickets are to be used to report users breaking rules of " .Guild.Name "** \n \n **• How to make a ticket** \n Click the corresponding reaction with what your ticket is about \n \n **• How to use tickets** \n Once a ticket is made, enter the chat and send evidence about the player you're reporting (If you cannot find the channel it will be at the top of all of the channels) \n \n :no_entry_sign: - Report A Scammer \n :warning: - Report A Member \n :money_with_wings: - Donate \n :question: - Other")
+"color" 4645612 )}}
+{{addMessageReactions nil $embed "🚫" "⚠️" "💸" "❓"}}

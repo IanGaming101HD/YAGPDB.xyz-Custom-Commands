@@ -1,0 +1,10 @@
+{{/*Made By Reaper Ian#1600*/}}
+{{/*Recommended Trigger Type: Reaction*/}}
+{{/*Recommended Trigger: Added reactions only*/}}
+{{$en := .Reaction.Emoji.Name}}
+{{if eq .Message.Author.ID 204255221017214977}}
+    {{if (eq $en "🔒")}}
+        {{$exec1 := exec "ticket close"}}
+        {{deleteMessageReaction .Reaction.ChannelID .Reaction.MessageID .Reaction.UserID "🔒"}}
+    {{end}}
+{{end}}
